@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-custom-azul-oscuro: #166193;
+    --color-custom-gris-oscuro: #1D1E1C;
+    --color-custom-gris-claro: #585856;
+    --color-custom-celeste: #37A6DE;
+    --color-custom-amarillo: #FDEA14;
+    --color-custom-blanco: #FFFFFF;
+
+    --font-roboto: "Roboto Flex", sans-serif;
+    --font-nunito: "Nunito", sans-serif;
+}
