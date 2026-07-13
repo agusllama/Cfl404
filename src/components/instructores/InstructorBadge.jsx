@@ -3,18 +3,15 @@
 const estadoConfig = {
   activo: {
     label: "Activo",
-    bg: "bg-emerald-100",
-    text: "text-emerald-700",
+    classes: "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/10",
   },
   inactivo: {
     label: "Inactivo",
-    bg: "bg-red-100",
-    text: "text-red-700",
+    classes: "bg-red-50 text-red-700 ring-1 ring-inset ring-red-600/10",
   },
   licencia: {
     label: "Licencia",
-    bg: "bg-amber-100",
-    text: "text-amber-700",
+    classes: "bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/10",
   },
 };
 
@@ -23,7 +20,7 @@ export default function InstructorBadge({ estado }) {
 
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold font-nunito ${cfg.bg} ${cfg.text}`}
+      className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium font-nunito ${cfg.classes}`}
     >
       {cfg.label}
     </span>

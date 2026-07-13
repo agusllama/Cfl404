@@ -1,5 +1,4 @@
 // Archivo: src/components/instructores/InstructoresTabla.jsx
-import { motion } from "framer-motion";
 import InstructorAvatar from "./InstructorAvatar";
 import InstructorBadge from "./InstructorBadge";
 
@@ -13,21 +12,21 @@ const COLS = [
 export default function InstructoresTabla({ instructores, onSeleccionar }) {
   if (instructores.length === 0) {
     return (
-      <div className="py-16 text-center border-t border-gray-100 bg-white">
-        <p className="text-gray-500 font-nunito text-sm">No se encontraron instructores.</p>
+      <div className="py-20 text-center">
+        <p className="text-slate-400 font-nunito text-sm">No se encontraron instructores.</p>
       </div>
     );
   }
 
   return (
-    <div className="w-full bg-white rounded-xl overflow-hidden border border-gray-200">
+    <div className="w-full">
       {/* Encabezado */}
-      <div className="flex items-center px-4 py-3 bg-slate-50 border-b border-gray-200">
+      <div className="flex items-center px-5 py-2.5 border-b border-slate-200/60 bg-slate-50/80">
         {COLS.map((col) => (
           <div
             key={col.label}
             style={{ width: col.width }}
-            className="text-xs uppercase text-gray-500 font-semibold font-nunito tracking-wider"
+            className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold font-nunito"
           >
             {col.label}
           </div>
@@ -36,34 +35,35 @@ export default function InstructoresTabla({ instructores, onSeleccionar }) {
 
       {/* Filas */}
       <div className="flex flex-col">
-        {instructores.map((inst, i) => (
-          <motion.div
+        {instructores.map((inst) => (
+          <div
             key={inst.id}
             onClick={() => onSeleccionar(inst)}
-            whileHover={{ backgroundColor: "#f8fafc" }}
-            transition={{ duration: 0.15 }}
-            className={`flex items-center px-4 py-3 cursor-pointer transition-colors group ${
-              i !== instructores.length - 1 ? "border-b border-gray-100" : ""
-            }`}
+            className="flex items-center px-5 py-3 cursor-pointer border-b border-slate-100 last:border-b-0 hover:bg-slate-50/80 transition-colors"
           >
             {/* Instructor */}
             <div style={{ width: COLS[0].width }} className="flex items-center gap-3">
               <InstructorAvatar src={inst.avatar} nombre={inst.nombre} size="sm" />
-              <p className="text-sm font-medium text-[#1D1E1C] font-nunito">
-                {inst.nombre} {inst.apellido}
-              </p>
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-slate-900 font-nunito truncate">
+                  {inst.nombre} {inst.apellido}
+                </p>
+                <p className="text-[12px] text-slate-400 font-nunito truncate mt-0.5">
+                  {inst.rol}
+                </p>
+              </div>
             </div>
 
             {/* DNI */}
             <div style={{ width: COLS[1].width }}>
-              <span className="text-sm text-gray-500 font-nunito font-light">
+              <span className="text-sm text-slate-500 font-nunito">
                 {inst.dni}
               </span>
             </div>
 
             {/* Email */}
             <div style={{ width: COLS[2].width }}>
-              <p className="text-sm text-gray-500 font-nunito font-light">
+              <p className="text-sm text-slate-500 font-nunito truncate">
                 {inst.email}
               </p>
             </div>
@@ -72,7 +72,7 @@ export default function InstructoresTabla({ instructores, onSeleccionar }) {
             <div style={{ width: COLS[3].width }}>
               <InstructorBadge estado={inst.estado} />
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
